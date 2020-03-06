@@ -21,7 +21,7 @@ pipeline
         {
             steps
             {
-                sh 'scp /var/lib/jenkins/workspace/DPipeline/webapp/target/webapp.war ubuntu@172.31.46.206:/var/lib/tomcat8/webapps/qaenv.war'
+                sh 'scp /var/lib/.jenkins/workspace/DPipeline/webapp/target/webapp.war ubuntu@172.31.46.206:/var/lib/tomcat8/webapps/qaenv.war'
             }
         }
         stage('ContTesting')
@@ -29,7 +29,7 @@ pipeline
             steps
             {
                 git 'https://github.com/selenium-saikrishna/TestingOnLinux.git'
-                sh 'java -jar  /var/lib/jenkins/workspace/DPipeline/testing.jar'
+                sh 'java -jar  /var/lib/.jenkins/workspace/DPipeline/testing.jar'
             }
         }
     }
@@ -38,7 +38,7 @@ pipeline
         success
         {
             input message: 'Waiting for approval from DM', submitter: 'rahu'
-    sh 'scp /var/lib/jenkins/workspace/DPipeline/webapp/target/webapp.war ubuntu@172.31.33.135:/var/lib/tomcat8/webapps/prodenv.war'
+    sh 'scp /var/lib/.jenkins/workspace/DPipeline/webapp/target/webapp.war ubuntu@172.31.33.135:/var/lib/tomcat8/webapps/prodenv.war'
         }
         failure
         {
