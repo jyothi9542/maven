@@ -2,7 +2,7 @@ node('master')
 {
     stage('ContinuesDownload') 
         {
-             git 'https://github.com/balajimbk/maven-pro.git'
+             git 'https://github.com/jyothi9542/maven.git'
         }
     
     stage('ContinuesBuild') 
@@ -12,7 +12,7 @@ node('master')
     
     stage('ContinuesDeployment') 
          {
-            sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/Pipeline/webapp/target/webapp.war  ubuntu@172.31.1.225:/var/lib/tomcat8/webapps/qaenv.war'
+            sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/Pipeline/webapp/target/webapp.war  ubuntu@172.31.46.206:/var/lib/tomcat8/webapps/qaenv.war'
                      }
          
     stage('ContinueTesting')
@@ -23,7 +23,7 @@ node('master')
     stage('ContinuesDelivery')
         {
                 input message: 'Waiting for approval from DM'
-                sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/Pipeline/webapp/target/webapp.war  ubuntu@172.31.1.160:/var/lib/tomcat8/webapps/prodevn.war'
+                sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/Pipeline/webapp/target/webapp.war  ubuntu@172.31.33.135:/var/lib/tomcat8/webapps/prodevn.war'
         }
         
 }
